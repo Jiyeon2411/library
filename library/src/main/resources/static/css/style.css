@@ -759,3 +759,19 @@ button {
      color: #ffffff;
      background-color: #000;
 }
+
+.col-md-2 {
+	width: 200px;
+}
+
+.col-md-2 > h2 {
+	background-color: #016e9f;
+	color: white;
+	height: 120px;
+}
+
+.col-md-2 > ul > li {
+	border-bottom: 1px solid #d9d9d9;
+	height: 45px;
+	cursor: pointer;
+}

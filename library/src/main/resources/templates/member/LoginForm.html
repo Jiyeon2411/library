@@ -94,38 +94,50 @@
 		<div class="site-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<h2 class="h3 mb-3 text-black">로그인</h2>
-					<div class="p-3 p-lg-5 border" style="border-radius: 10px; width:50%">
-					<form role="form" action="/members/login" method="post">
-						<div class="form-group row">
-							<div class="col-md-12">
-								<label th:for="email" class="text-black">이메일</label> <input
-									type="email" class="form-control" id="email" name="email"
-									placeholder="이메일을 입력해주세요">
+				<div class="col-md-12" style= "display:flex; justify-content:space-between;">
+					<div class="col-md-10" style="float: left;">
+						<h2 class=" text-black">로그인</h2>
+						<div class="p-3 p-lg-5 border" style="border-radius: 10px; width:70%">
+						<form role="form" action="/members/login" method="post">
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="email" class="text-black">이메일</label> <input
+										type="email" class="form-control" id="email" name="email"
+										placeholder="이메일을 입력해주세요">
+								</div>
 							</div>
-						</div>
-
-						<div class="form-group row">
-							<div class="col-md-12">
-								<label th:for="password" class="text-black">비밀번호</label> <input
-									type="password" class="form-control" id="password"
-									name="password" placeholder="비밀번호를 입력해주세요">
+	
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="password" class="text-black">비밀번호</label> <input
+										type="password" class="form-control" id="password"
+										name="password" placeholder="비밀번호를 입력해주세요">
+								</div>
 							</div>
-						</div>
-
-						<div class="form-group">
-							<p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
-							<label><input type="checkbox" name="id_save" id="id_save" />이메일 기억</label>
-							<div>
-							<button type="submit" class="btn btn-primary mb-3" id="loginbtn" 
-							style="background-color: #016e9f; border-style: none;">로그인</button>
-							&nbsp;						
+	
+							<div class="form-group">
+								<p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
+								<label><input type="checkbox" name="id_save" id="id_save" />이메일 기억</label>
+								<div>
+								<button type="submit" class="btn btn-primary mb-3" id="loginbtn" 
+								style="background-color: #016e9f; border-style: none;">로그인</button>
+								&nbsp;						
+								</div>
 							</div>
+							<input type="hidden">
+							</form>
 						</div>
-						<input type="hidden">
-						</form>
 					</div>
+					<div class="col-md-2" style= "float: right; padding-top:30px">
+						<h2><b>로그인</b></h2>
+						<ul>
+						<li><a class="nav2-link" href="/members/login">로그인</a></li>
+						<li>회원가입</li>
+						<li>아이디 찾기</li>
+						<li>비밀번호 찾기</li>
+						</ul>
+					</div>
+					
 				</div>
 			</div>
 		</div>

@@ -94,9 +94,10 @@
 	<div class="site-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<h2 class="h3 mb-3 text-black">회원가입</h2>
-					<div class="p-3 p-lg-5 border" style="border-radius: 10px; width: 50%;">
+				<div class="col-md-12" style= "display:flex; justify-content:space-between;">
+				<div class="col-md-10" style="float: left;">
+					<h2 class="text-black">회원가입</h2>
+					<div class="p-3 p-lg-5 border" style="border-radius: 10px; width: 70%;">
 						<form role="form" action="/members/new" 
 						 method="post" th:object="${memberFormDto}">
 							<div class="form-group row">
@@ -148,6 +149,17 @@
 						</form>
 					</div>
 				</div>
+				
+				<div class="col-md-2" style= "float: right; padding-top:30px">
+						<h2><b>회원가입</b></h2>
+						<ul>
+						<li>로그인</li>
+						<li>회원가입</li>
+						<li>아이디 찾기</li>
+						<li>비밀번호 찾기</li>
+						</ul>
+					</div>
+				
 			</div>
 		</div>
 	</div>
