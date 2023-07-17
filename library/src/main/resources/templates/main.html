@@ -63,8 +63,14 @@
               <li class="nav-item">
                 <a class="nav-link" href="customer.html">인기도서</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="customer.html" sec:authorize="isAuthenticated()">대출조회</a>
+              </li>
               <li class="nav-item active">
-                <a class="nav-link" href="/members/login">로그인</a>
+                <a class="nav-link" href="/members/login" sec:authorize="isAnonymous()">로그인</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/members/logout" sec:authorize="isAuthenticated()">로그아웃</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/members/signup">회원가입</a>
