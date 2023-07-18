@@ -64,7 +64,7 @@
                 <a class="nav-link" href="customer.html">인기도서</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./loan/loanHist.html" sec:authorize="isAuthenticated()">대출조회</a>
+                <a class="nav-link" href="/loan/loanHist" sec:authorize="isAuthenticated()">대출조회</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="/members/login" sec:authorize="isAnonymous()">로그인</a>
@@ -132,7 +132,7 @@
                             <h2 style="font-size: 16px; font-weight: bold; line-height: 20px;">희망도서 신청</h2>
                             </div>
                             <div class="rec_book__button">
-                            <button type="button" class="rec_book__more"
+                            <button type="button" class="rec_book__more" onclick="location.href='recBook.html'"
                             style="width: 60px; height: 30px; border-radius: 4px; background-color: rgb(238, 238, 238);
                             padding-top: 3px; text-align: center; border-color: rgb(214, 213, 213);">더보기</button>
                             </div>

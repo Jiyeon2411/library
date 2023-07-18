@@ -31,6 +31,7 @@ public class Member {
 	
 	private String password;
 	
+	@Column(unique = true)
 	private String email;
 	
 	@Enumerated(EnumType.STRING)
