@@ -29,5 +29,4 @@ public class RecBook {
 	@JoinColumn(name="member_id")
 	private Member member;
 	
-	
 }
