@@ -2,6 +2,8 @@ package com.library.entity;
 
 import java.util.Date;
 
+import com.library.constant.LoanStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -25,12 +27,18 @@ public class Loan {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int loan_id;
 	
+	private Date loan_start;
+	
 	private Date loan_deadline;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="member_id")
+	private LoanStatus status;
+	
+	
 	private Member member;
 	
-	
 	private String title;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="book")
+	private Book book;
 }

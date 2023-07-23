@@ -24,13 +24,4 @@ public class BookController {
 		return "loan/loanBook";
 	}
 	
-	/*@GetMapping
-	public List<Book> findAll() {
-		return bookService.findAll();
-	}
-	
-	@PostMapping
-	public Book create(@Valid @RequestBody Book book) {
-		return bookService.addBook(book);
-	}*/
 }
