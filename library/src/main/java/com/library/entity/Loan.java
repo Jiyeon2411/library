@@ -1,6 +1,9 @@
 package com.library.entity;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.library.constant.LoanStatus;
 
@@ -23,22 +26,51 @@ import lombok.*;
 public class Loan {
 	
 	@Id
-	@Column(name="loan")
+	@Column(name="loan_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int loan_id;
+	private long id;
 	
-	private Date loan_start;
+	private LocalDateTime loan_date;
 	
-	private Date loan_deadline;
+	private LocalDateTime loan_deadline;
 	
-	private LoanStatus status;
-	
-	
-	private Member member;
-	
-	private String title;
+	private LoanStatus loanstatus;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="book")
+	@JoinColumn(name="member_id")
+	private Member member;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="book_id")
 	private Book book;
+	
+	
+	/*
+	public void addLoanBook(LoanBook loanBook) {
+		this.loanBooks.add(loanBook);
+		loanBook.setLoan(this);
+	}
+	
+	public Loan createLoan(Member member, List<LoanBook> loanBookList) {
+		Loan loan = new Loan();
+		loan.setMember(member);
+		
+		for(LoanBook loanBook : loanBookList) {
+			loan.addLoanBook(loanBook);
+		}
+		
+		loan.setLoanstatus(LoanStatus.AVAILABLE);
+		loan.setLoan_date(LocalDateTime.now());
+		
+		return loan;
+	}
+		
+	public void cancelLoan() {
+		this.loanstatus = LoanStatus.CANCEL;
+		
+		for(LoanBook loanBook: loanBooks) {
+			loanBook.cancel();
+		}
+	}
+	*/
 }

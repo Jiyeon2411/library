@@ -21,9 +21,9 @@ import lombok.*;
 public class Book {
 
 	@Id
-	@Column(name="book_title")
+	@Column(name="book_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String title;
+	private long id;
 	
 	@Column(nullable = false)
 	private String author;
@@ -32,9 +32,6 @@ public class Book {
 	private String publisher;
 	
 	@Column(nullable = false)
-	private String book_id;
+	private String title;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name="loan")
-	private List<Loan> loan;
 }

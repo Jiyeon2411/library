@@ -10,6 +10,6 @@ import com.library.entity.Loan;
 
 public interface LoanRepository extends JpaRepository<Loan, Long> {
 
-	Optional<Loan> findByBookAndStatus(Book book, LoanStatus status);
+	//Optional<Loan> findByBookAndStatus(Book book, LoanStatus status);
 	
 }

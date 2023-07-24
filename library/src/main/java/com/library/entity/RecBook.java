@@ -19,8 +19,10 @@ import lombok.*;
 public class RecBook {
 
 	@Id
-	@Column(name="book_title")
+	@Column(name="rec_book_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
 	private String title;
 	
 	private String content;
