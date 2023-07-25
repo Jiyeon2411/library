@@ -25,7 +25,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class Loan {
+public class Loan extends BaseEntity{
 	
 	@Id
 	@Column(name="loan_id")

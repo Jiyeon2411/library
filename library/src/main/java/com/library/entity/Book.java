@@ -18,7 +18,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class Book {
+public class Book extends BaseEntity{
 
 	@Id
 	@Column(name="book_id")
