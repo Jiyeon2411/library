@@ -1,5 +1,6 @@
 package com.library.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,9 +10,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.library.dto.BookSearchDto;
+import com.library.dto.LoanBookDto;
 import com.library.entity.Book;
+import com.library.entity.Loan;
+import com.library.entity.Member;
 import com.library.repository.BookRepository;
+import com.library.repository.LoanRepository;
+import com.library.repository.MemberRepository;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
@@ -20,12 +27,32 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BookService {
 
-	private final BookRepository bookrepo;
+	private final MemberRepository memberRepo;
+    private final LoanRepository loanRepo;
+    private final BookRepository bookRepo;
 	
+    public Long loan(LoanBookDto loanbookdto, String email) {
+	
+		Book book = bookRepo.findById(loanbookdto.getId())
+								.orElseThrow(EntityNotFoundException::new);
+		
+		Member member = memberRepo.findByEmail(email);
+		
+		List<Loan> loanList = new ArrayList<>();
+		Loan loan = Loan.createLoan(member, loanbookdto.getId());
+		loanList.add(loan);
+		
+		loan.setBook(book);
+		loanRepo.save(loan);
+		
+		return loan.getId();
+}
+    
 	@Transactional
 	public Page<Book> getBookPage(BookSearchDto booksearchdto, Pageable pageable) {
-			Page<Book> bookPage = bookrepo.getBookPage(booksearchdto, pageable);
+			Page<Book> bookPage = bookRepo.getBookPage(booksearchdto, pageable);
 			return bookPage;
 	}
-
+	
+	
 }

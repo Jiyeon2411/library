@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.library.constant.LoanStatus;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.*;
 
@@ -45,26 +47,24 @@ public class Loan {
 	private Book book;
 	
 	
-	/*
-	public void addLoanBook(LoanBook loanBook) {
-		this.loanBooks.add(loanBook);
-		loanBook.setLoan(this);
-	}
+	private static List<Loan> loanBooks = new ArrayList<>();
 	
-	public Loan createLoan(Member member, List<LoanBook> loanBookList) {
+	public void addLoanBook(Loan loanBook) {
+		this.loanBooks.add(loanBook);
+	} 
+	
+	public static Loan createLoan(Member member, Long id) {
 		Loan loan = new Loan();
 		loan.setMember(member);
-		
-		for(LoanBook loanBook : loanBookList) {
-			loan.addLoanBook(loanBook);
-		}
 		
 		loan.setLoanstatus(LoanStatus.AVAILABLE);
 		loan.setLoan_date(LocalDateTime.now());
 		
 		return loan;
 	}
-		
+
+	
+	/*
 	public void cancelLoan() {
 		this.loanstatus = LoanStatus.CANCEL;
 		
