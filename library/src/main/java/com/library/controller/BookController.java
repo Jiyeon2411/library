@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.dto.BookSearchDto;
 import com.library.dto.LoanBookDto;
+import com.library.dto.RecBookDto;
 import com.library.entity.Book;
 import com.library.service.BookService;
 
@@ -81,7 +83,17 @@ public class BookController {
 	}
 	
 	@GetMapping(value = "/rec/recCreate")
-	public String recCreate() {
+	public String rec() {
 		return "rec/recCreate";
+	}
+	
+	@PostMapping(value = "/rec/recCreate")
+	public String recCreate(@Valid RecBookDto recbookdto, BindingResult bindingResult,
+			Model model) {
+		
+		if(bindingResult.hasErrors()) {
+			return "rec/recList";
+		}
+		return "redirect:/";
 	}
 }
