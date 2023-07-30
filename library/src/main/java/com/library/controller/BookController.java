@@ -75,5 +75,13 @@ public class BookController {
 		return "loan/loanBook";
 	}
 	
+	@GetMapping(value = "/rec/recList")
+	public String recList() {
+		return "rec/recList";
+	}
 	
+	@GetMapping(value = "/rec/recCreate")
+	public String recCreate() {
+		return "rec/recCreate";
+	}
 }

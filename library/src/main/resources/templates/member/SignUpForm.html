@@ -58,11 +58,9 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+              
               <li class="nav-item">
-                <a class="nav-link" href="customer.html">인기도서</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="loan/loanBook" sec:authorize="isAuthenticated()">대출하기</a>
+                <a class="nav-link" href="/loan/loanBook" sec:authorize="isAuthenticated()">대출하기</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/loan/loanHist" sec:authorize="isAuthenticated()">대출조회</a>
@@ -80,7 +78,7 @@
                 <a class="nav-link" href="#">아이디/비밀번호 찾기</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="images/search-icon.png"></a>
+                <a class="nav-link" href="#"><img src="/images/search-icon.png"></a>
               </li>
             </ul>
           </div>

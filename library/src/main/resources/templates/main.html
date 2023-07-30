@@ -57,9 +57,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" style="text-align: center;">
-              <li class="nav-item">
-                <a class="nav-link" href="customer.html">인기도서</a>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link" href="loan/loanBook" sec:authorize="isAuthenticated()">대출하기</a>
               </li>
@@ -106,9 +104,9 @@
                     <div class="notice" style="width: 450px; ">
                         <div class="notice__top" style="display: flex;">
                             <div class="notice__title" style="float: left;">
-                            <h2 style="font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">공지사항</h2>
+                            <h2 style="font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">추천도서</h2>
                             </div>
-                            <div class="notice__button" style="float: right;">
+                            <div class="notice__button" style="padding-left: 320px" onclick="location.href='/rec/recList'">
                             <button type="button" class="notice__more"
                             style="width: 60px; height: 30px; border-radius: 4px; background-color: rgb(238, 238, 238);
                             padding-top: 3px; text-align: center; border-color: rgb(214, 213, 213); ">더보기</button>
@@ -117,34 +115,36 @@
                             <hr style="width: 450px;">
                         <div class="notice__content">
                             <ul style="text-align: left;">
-                                <li><a href="#">[공지] 1</a></li>
-                                <li><a href="#">[공지] 2 </a></li>
-                                <li><a href="#">[공지] 3</a></li>
-                                <li><a href="#">[공지] 4</a></li>
-                                <li><a href="#">[공지] 5</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="rec_book" style="width: 450px; padding-left: 150px;">
-                        <div class="rec_book__top" style="display: flex;">
-                            <div class="rec_book__title">
-                            <h2 style="font-size: 16px; font-weight: bold; line-height: 20px;">희망도서 신청</h2>
-                            </div>
-                            <div class="rec_book__button">
-                            <button type="button" class="rec_book__more" onclick="location.href='/recbooklist'"
-                            style="width: 60px; height: 30px; border-radius: 4px; background-color: rgb(238, 238, 238);
-                            padding-top: 3px; text-align: center; border-color: rgb(214, 213, 213);">더보기</button>
-                            </div>
-                        </div>
-                            <hr style="width: 450px;">
-                        <div class="news__content">
-                            <ul style="text-align: left;">
+                                
                                 <li><a href="#">책1</a></li>
                                 <li><a href="#">책2</a></li>
                                 <li><a href="#">책3</a></li>
                                 <li><a href="#">책4</a></li>
                                 <li><a href="#">책5</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rec_book" style="width: 450px; padding-left: 150px;">
+                        <div class="notice__top" style="display: flex;">
+                            <div class="notice__title" style="width: 50px; height: 30px; margin:0 auto;">
+                            <h2 style="font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">공지</h2>
+                            </div>
+                            <div class="notice__button" style="padding-left: 370px; width: 250px;">
+                            <button type="button" class="notice__more"
+                            style="width: 60px; height: 30px; border-radius: 4px; background-color: rgb(238, 238, 238);
+                            padding-top: 3px; text-align: center; border-color: rgb(214, 213, 213); ">더보기</button>
+                            </div>
+                        </div>
+             
+                            <hr style="width: 450px;">
+                        <div class="news__content">
+                            <ul style="text-align: left; width: 450px;">
+                                <li><a href="#">[공지] 2023년도 정규 평생학습 프로그램 강사 최종합격자 안내</a></li>
+                                <li><a href="#">[공지] 디지털자료실 자료 대출 확대 안내</a></li>
+                                <li><a href="#">[공지] 2023년 마을기관 연계 나눔 교육 프로그램 참여기관 모집에 따른 수요조사 실시</a></li>
+                                <li><a href="#">[공지] 2023년 상반기 평생학습 프로그램 학습자 모집 안내</a></li>
+                                <li><a href="#">[공지] 2023년 상반기 야간 인문학 강좌 「문화사회학으로 바라본 한국의 세대 연대기」 운영 안내</a></li>
                             </ul>
                         </div>
                     </div>

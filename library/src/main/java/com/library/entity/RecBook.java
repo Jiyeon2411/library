@@ -25,7 +25,9 @@ public class RecBook {
 	
 	private String title;
 	
-	private String content;
+	private String author;
+	
+	private String publisher;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="member_id")
