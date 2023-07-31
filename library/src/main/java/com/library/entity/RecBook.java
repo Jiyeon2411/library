@@ -1,7 +1,10 @@
 package com.library.entity;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +19,8 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EntityListeners(AuditingEntityListener.class)
 public class RecBook {
 
 	@Id
@@ -25,12 +30,15 @@ public class RecBook {
 	
 	private String title;
 	
-	private String author;
 	
 	private String publisher;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="member_id")
-	private Member member;
 	
+	
+	@Builder
+	public RecBook(Long id, String title, String publisher) {
+		this.id = id;
+		this.title = title;
+		this.publisher = publisher;
+	}
 }

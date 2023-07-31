@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 
 import com.library.dto.BookSearchDto;
 import com.library.dto.LoanBookDto;
+import com.library.dto.RecBookDto;
 import com.library.entity.Book;
 import com.library.entity.Loan;
 import com.library.entity.Member;
 import com.library.repository.BookRepository;
 import com.library.repository.LoanRepository;
 import com.library.repository.MemberRepository;
+import com.library.repository.RecBookRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
