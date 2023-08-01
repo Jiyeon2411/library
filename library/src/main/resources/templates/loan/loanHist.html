@@ -82,8 +82,39 @@
         </div>
       </div>
       
+      <div id="list" style="margin:0 auto; padding-top: 30px;">
+		<table class="table" style="width:690px; height:30px; padding-top:30px; margin:0 auto">
+  <thead>
+    <tr>
+      <th scope="col">순번</th>
+      <th scope="col">지은이</th>
+      <th scope="col">제목</th>
+      <th scope="col">출판사</th>
+      <th scope="col">대출여부</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr th:each="book:${books}">
+      <th scope="row" th:text="${book.id}">
+      </th>
+      <td th:text="${book.title}"></td>
+      <td th:text="${book.author}"></td>
+      <td th:text="${book.publisher}"></td>
+      <td>
+		  <div id="loan">
+			<input type="button" value="대출하기" class="btn2" style="background-color:#016e9f; 
+			color: white; vertical-align: bottom; border-style: none;" th:onclick="loan([[${book.id}]]);"/>
+		</div>
+	  </td>
+    </tr>
+  
+</table>
+  
+</div>
+      
 <!-- copyright section start -->
-      <div class="copyright_section">
+      <div class="copyright_section" style="margin-top:80px">
         <div class="container">
           <p class="copyright">Copyright ⓒ Incheon Metropolitan City Office of Education Gyeyang Library. All Rights Reserved.</p>
         </div>

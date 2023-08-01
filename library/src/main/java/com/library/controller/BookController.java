@@ -75,4 +75,8 @@ public class BookController {
 		return "loan/loanBook";
 	}
 
+	@GetMapping(value = "/loan/loanHist")
+	public String loanHist(Model model) {
+		return "loan/loanHist";
+	}
 }

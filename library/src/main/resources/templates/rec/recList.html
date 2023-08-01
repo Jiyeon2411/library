@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>
       <!-- basic -->
       <meta charset="utf-8">
@@ -59,7 +61,7 @@
             <ul class="navbar-nav mr-auto">
               
               <li class="nav-item">
-                <a class="nav-link" href="loan/loanBook" sec:authorize="isAuthenticated()">대출하기</a>
+                <a class="nav-link" href="/loan/loanBook" sec:authorize="isAuthenticated()">대출하기</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/loan/loanHist" sec:authorize="isAuthenticated()">대출조회</a>
@@ -99,15 +101,15 @@
   </thead>
   
   <tbody>
-    <tr th:each="rec:${recList}">
-      <th scope="row" th:text="${rec.id}">
+    <tr th:each="recbook:${recBookList}">
+      <th scope="row" th:text="${recbook.id}">
       </th>
-      <td th:text="${rec.title}"></td>
-      <td th:text="${rec.publisher}"></td>
+      <td th:text="${recbook.title}"></td>
+      <td th:text="${recbook.publisher}"></td>
       <td>
 		  <div id="loan">
 			<input type="button" value="대출하기" class="btn2" style="background-color:#016e9f; 
-			color: white; vertical-align: bottom; border-style: none;" th:onclick="loan([[${rec.id}]]);"/>
+			color: white; vertical-align: bottom; border-style: none;" th:onclick="loan([[${recbook.id}]]);"/>
 		</div>
 	  </td>
     </tr>

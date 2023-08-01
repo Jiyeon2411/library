@@ -1,5 +1,7 @@
 package com.library.dto;
 
+import org.modelmapper.ModelMapper;
+
 import com.library.entity.RecBook;
 
 import lombok.*;
@@ -13,10 +15,24 @@ public class RecBookDto {
 	private String title;
 	private String publisher;
 	
+	private static ModelMapper modelMapper = new ModelMapper();
+	
+	//dto -> entity
+	public RecBook createRecBook() {
+		return modelMapper.map(this, RecBook.class);
+	}   
+	
+	//entity -> dto로 바꿈
+	public static RecBookDto of(RecBook recBook) {
+		return modelMapper.map(recBook, RecBookDto.class);
+	}
+
+	
+	/*
 	public RecBook toEntity() {
 		RecBook build = RecBook.builder()
 				.id(id)
-				.title(title)
+				.title(title) 
 				.publisher(publisher)
 				.build();
 		return build;
@@ -28,4 +44,6 @@ public class RecBookDto {
 		this.title = title;
 		this.publisher = publisher;
 	}
+	*/
+	
 }

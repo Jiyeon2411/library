@@ -35,7 +35,7 @@ public class RecBookController {
 	@GetMapping("/rec/recList")
 	public String list(Model model) {
 		List<RecBookDto> recBookDtoList = recBookService.getRecList();
-		model.addAttribute("recList", recBookDtoList);
+		model.addAttribute("recBookList", recBookDtoList);
 		return "rec/recList";
 	}
 	

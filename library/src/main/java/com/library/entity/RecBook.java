@@ -30,13 +30,11 @@ public class RecBook {
 	
 	private String title;
 	
-	
 	private String publisher;
 	
 	
-	
 	@Builder
-	public RecBook(Long id, String title, String publisher) {
+	public RecBook(Long id,String title, String publisher) {
 		this.id = id;
 		this.title = title;
 		this.publisher = publisher;

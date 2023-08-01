@@ -33,8 +33,8 @@ public class RecBookService {
 	}
 	
 	@Transactional
-	public Long savePost(RecBookDto recBookDto) {
-		return recRepo.save(recBookDto.toEntity()).getId();
+	public String savePost(RecBookDto recBookDto) {
+		return recRepo.save(recBookDto.createRecBook()).getTitle();
 	}
 	
 	@Transactional
@@ -42,14 +42,12 @@ public class RecBookService {
 		List<RecBook> recBookList = recRepo.findAll();
 		List<RecBookDto> recBookDtoList = new ArrayList<>();
 		
+	
 		for(RecBook recbook : recBookList) {
-			RecBookDto recBookDto = RecBookDto.builder()
-					.id(recbook.getId())
-					.title(recbook.getTitle())
-					.publisher(recbook.getPublisher())
-					.build();
+			RecBookDto recBookDto = RecBookDto.of(recbook);
 			recBookDtoList.add(recBookDto);
 		}
+		
 		return recBookDtoList;
 	}
 }
