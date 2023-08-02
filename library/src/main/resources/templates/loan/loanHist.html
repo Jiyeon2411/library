@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>
       <!-- basic -->
       <meta charset="utf-8">
@@ -24,15 +25,17 @@
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
       <!-- Tweaks for older IEs-->
-      <link rel="stylesheet" href="/https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
       <link rel="stylesheet" href="/css/owl.carousel.min.css">
       <link rel="stylesheet" href="/css/owl.theme.default.min.css">
-      <link rel="stylesheet" href="/https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+	<meta name="_csrf_header" th:content="${_csrf.headerName}" />
     </head>
     <body>
       <!-- header top section start -->
-      <div class="header_top">
+      <div class="header_top" style="width: 100%; float: left; background-color: #016e9f; height: auto; padding: 10px 0px;">
         <div class="container">
           <div class="row">
             <div class="col-sm-4">
@@ -57,15 +60,19 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto" style="text-align: center;">
+             
               <li class="nav-item">
-                <a class="nav-link" href="index.html">전체메뉴</a>
+                <a class="nav-link" href="loan/loanBook" sec:authorize="isAuthenticated()">대출하기</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="customer.html">인기도서</a>
+                <a class="nav-link" href="/loan/loanHist" sec:authorize="isAuthenticated()">대출조회</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="/members/login">로그인</a>
+                <a class="nav-link" href="/members/login" sec:authorize="isAnonymous()">로그인</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/members/logout" sec:authorize="isAuthenticated()">로그아웃</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/members/signup">회원가입</a>
@@ -86,7 +93,7 @@
 		<table class="table" style="width:690px; height:30px; padding-top:30px; margin:0 auto">
   <thead>
     <tr>
-      <th scope="col">순번</th>
+      <th scope="col">대출번호</th>
       <th scope="col">지은이</th>
       <th scope="col">제목</th>
       <th scope="col">출판사</th>

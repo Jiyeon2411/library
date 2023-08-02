@@ -6,11 +6,13 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.library.dto.BookSearchDto;
 import com.library.dto.LoanBookDto;
+import com.library.dto.LoanHistDto;
 import com.library.dto.RecBookDto;
 import com.library.entity.Book;
 import com.library.entity.Loan;
@@ -29,6 +31,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BookService {
 
+	@Autowired
 	private final MemberRepository memberRepo;
     private final LoanRepository loanRepo;
     private final BookRepository bookRepo;
@@ -56,5 +59,19 @@ public class BookService {
 			return bookPage;
 	}
 	
-	
+	//대출목록 가져오기
+	/*@Transactional
+	public Page<LoanBookDto> getLoanList(String email, Pageable pageable) {
+		List<Loan> loans = loanRepo.findAll();
+		
+		List<LoanHistDto> loanHistDtos = new ArrayList<>();
+		
+		for(Loan loan : loans) {
+			LoanHistDto loanHistDto = new LoanHistDto(loan);
+		
+		}
+		return new PageImpl<>(loanHistDtos, pageable);
+		
+	}*/
+
 }
