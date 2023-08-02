@@ -94,7 +94,7 @@ xmlns:th="http://www.thymeleaf.org"
   <thead>
     <tr>
       
-      <th scope="col">순번</th>
+      <th scope="col">도서번호</th>
       <th scope="col">제목</th>
       <th scope="col">출판사</th>
     </tr>
@@ -106,12 +106,7 @@ xmlns:th="http://www.thymeleaf.org"
       </th>
       <td th:text="${recbook.title}"></td>
       <td th:text="${recbook.publisher}"></td>
-      <td>
-		  <div id="loan">
-			<input type="button" value="대출하기" class="btn2" style="background-color:#016e9f; 
-			color: white; vertical-align: bottom; border-style: none;" th:onclick="loan([[${recbook.id}]]);"/>
-		</div>
-	  </td>
+      
     </tr>
   
 </table>
