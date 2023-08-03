@@ -94,23 +94,22 @@
   <thead>
     <tr>
       <th scope="col">대출번호</th>
-      <th scope="col">지은이</th>
-      <th scope="col">제목</th>
-      <th scope="col">출판사</th>
-      <th scope="col">대출여부</th>
+      <th scope="col">대출날짜</th>
+      <th scope="col">대출기한</th>
+      <th scope="col">반납여부</th>
     </tr>
   </thead>
   
   <tbody>
-    <tr th:each="book:${books}">
-      <th scope="row" th:text="${book.id}">
+    <tr th:each="loan:${loans}">
+      <th scope="row" th:text="${loa.id}">
       </th>
       <td th:text="${book.title}"></td>
       <td th:text="${book.author}"></td>
       <td th:text="${book.publisher}"></td>
       <td>
 		  <div id="loan">
-			<input type="button" value="대출하기" class="btn2" style="background-color:#016e9f; 
+			<input type="button" value="반납하기" class="btn2" style="background-color:#016e9f; 
 			color: white; vertical-align: bottom; border-style: none;" th:onclick="loan([[${book.id}]]);"/>
 		</div>
 	  </td>

@@ -34,7 +34,13 @@ public class RecBook {
 	
 	
 	@Builder
-	public RecBook(Long id,String title, String publisher) {
+	public RecBook(Long id, String title, String publisher) {
+		this.id = id;
+		this.title = title;
+		this.publisher = publisher;
+	}
+	
+	public void update(Long id, String title, String publisher) {
 		this.id = id;
 		this.title = title;
 		this.publisher = publisher;

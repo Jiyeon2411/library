@@ -1,19 +1,19 @@
 package com.library.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.library.constant.LoanStatus;
-import com.library.entity.Book;
 import com.library.entity.Loan;
 
-public interface LoanRepository extends JpaRepository<Loan, Long> {
+public interface LoanRepository extends JpaRepository<Loan, Long>{
 
-	//Optional<Loan> findByBookAndStatus(Book book, LoanStatus status);
+	/* @Query("select o from Loan o where o.member.email = :email order by o.loan_date desc")
+	List<Loan> findLoans(@Param("email") String email, Pageable pageable);
 	
-	//List<Loan> findLoans(@Param("email") String email, Pageable pageable);
+	@Query("select o from loan o order by o.loan_date asc")
+	List<Loan> findAllLoans(Pageable pageable); */
 }

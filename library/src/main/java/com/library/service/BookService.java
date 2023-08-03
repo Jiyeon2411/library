@@ -58,6 +58,13 @@ public class BookService {
 			Page<Book> bookPage = bookRepo.getBookPage(booksearchdto, pageable);
 			return bookPage;
 	}
+
+	/* public void loan(Long id, String email) {
+		// TODO Auto-generated method stub
+		
+	} */
+	
+	
 	
 	//대출목록 가져오기
 	/*@Transactional
