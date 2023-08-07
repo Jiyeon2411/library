@@ -1,5 +1,6 @@
 package com.library.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -18,7 +19,7 @@ public abstract class BaseTimeEntity {
 
 	@CreatedDate
 	@Column(updatable = false)
-	private LocalDateTime loan_date;
+	private LocalDate loan_date;
 	
 	@CreatedDate
 	private LocalDateTime loan_deadline;

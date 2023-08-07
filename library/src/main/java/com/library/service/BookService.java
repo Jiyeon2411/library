@@ -31,11 +31,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BookService {
 
-	@Autowired
 	private final MemberRepository memberRepo;
     private final LoanRepository loanRepo;
     private final BookRepository bookRepo;
-	
+    
+    @Autowired
+    public BookService(BookRepository bookRepo, MemberRepository memberRepo, LoanRepository loanRepo) {
+        this.memberRepo = memberRepo;
+        this.loanRepo = loanRepo;
+		this.bookRepo = bookRepo;
+    }
+    
     public Long loan(LoanBookDto loanbookdto, String email) {
 	
 		Book book = bookRepo.findById(loanbookdto.getId())
@@ -58,11 +64,12 @@ public class BookService {
 			Page<Book> bookPage = bookRepo.getBookPage(booksearchdto, pageable);
 			return bookPage;
 	}
-
-	/* public void loan(Long id, String email) {
-		// TODO Auto-generated method stub
-		
-	} */
+	
+	@Transactional
+	public Page<Loan> getLoanList(String email, Pageable pageable) {
+		Member member = memberRepo.findByEmail(email);
+		return loanRepo.findByMember(member, pageable);
+	}
 	
 	
 	

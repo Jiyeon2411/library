@@ -102,15 +102,15 @@
   
   <tbody>
     <tr th:each="loan:${loans}">
-      <th scope="row" th:text="${loa.id}">
-      </th>
-      <td th:text="${book.title}"></td>
-      <td th:text="${book.author}"></td>
-      <td th:text="${book.publisher}"></td>
+      <!--<th scope="row" th:text="${loan.id}">
+      </th>-->
+      <td th:text="${loan.id}"></td>
+      <td th:text="${loan.loan_date}"></td>
+      <td th:text="${loan.loan_deadline}"></td>
       <td>
 		  <div id="loan">
 			<input type="button" value="반납하기" class="btn2" style="background-color:#016e9f; 
-			color: white; vertical-align: bottom; border-style: none;" th:onclick="loan([[${book.id}]]);"/>
+			color: white; vertical-align: bottom; border-style: none;" th:onclick="'loan/' + ${loan.id} + '/return'"/>
 		</div>
 	  </td>
     </tr>

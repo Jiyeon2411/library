@@ -1,5 +1,6 @@
 package com.library.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,13 +33,13 @@ public class Loan extends BaseEntity{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private LocalDateTime loan_date;
+	private LocalDate loan_date;
 	
 	private LocalDateTime loan_deadline;
 	
 	private LoanStatus loanstatus;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="member_id")
 	private Member member;
 	
@@ -58,7 +59,7 @@ public class Loan extends BaseEntity{
 		loan.setMember(member);
 		
 		loan.setLoanstatus(LoanStatus.AVAILABLE);
-		loan.setLoan_date(LocalDateTime.now());
+		loan.setLoan_date(LocalDate.now());
 		
 		return loan;
 	}

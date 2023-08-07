@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,6 +27,7 @@ import com.library.dto.LoanHistDto;
 import com.library.entity.Book;
 import com.library.entity.Loan;
 import com.library.service.BookService;
+import com.library.service.LoanService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +36,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BookController {
 	
+	private final LoanService loanService;
+	
+	@Autowired
 	private final BookService bookService;
 	
 	@PostMapping(value = "/loan/loanBook")
@@ -79,12 +84,24 @@ public class BookController {
 	}
 
 	 @GetMapping(value = "/loan/loanHist")
-	public String loanHist(Model model) {
+	   public String loanHist(Model model) {
+	      List<LoanHistDto> dtos = loanService.getAllLoanList();
+
+	      model.addAttribute("loans",dtos);
+
+	      return "loan/loanHist";
+	 }
+	
+	 @GetMapping(value = "/loan/loanHistWithPrincipal")
+	public String loanHist(Principal principal, Model model) {
+		String email = principal.getName();
+		Pageable pageable = PageRequest.of(0, 10);
+		Page<Loan> loanPage = bookService.getLoanList(email, pageable);
+		
+		model.addAttribute("loans", loanPage.getContent());
+		model.addAttribute("currentPage", loanPage.getNumber());
+		model.addAttribute("totalPages", loanPage.getTotalPages());
+		
 		return "loan/loanHist";
 	} 
-	
-	/* @GetMapping(value = "/loan/loanHist")
-	public String loanHist(LoanHistDto loanHistDto, Model model) {
-		List<Loan> loans = bookService.
-	} */
 }

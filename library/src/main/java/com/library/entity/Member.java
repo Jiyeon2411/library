@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.library.constant.Role;
 import com.library.dto.MemberFormDto;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -42,8 +43,7 @@ public class Member {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name="loan")
+	@OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
 	private List<Loan> loan;
 	
 	public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
