@@ -13,7 +13,7 @@ import lombok.Data;
 public class LoanHistDto {
    private Long id;
    private LocalDate loan_date;
-   private LocalDateTime loan_deadline;
+   private LocalDate loan_deadline;
    private LoanStatus loanstatus;
    
 
@@ -24,7 +24,7 @@ public class LoanHistDto {
       this.loanstatus = loan.getLoanstatus();
    }
 
-   public LoanHistDto(Long id, LocalDate loanDate, LocalDateTime loanDeadline, LoanStatus loanstatus) {
+   public LoanHistDto(Long id, LocalDate loanDate, LocalDate loanDeadline, LoanStatus loanstatus) {
       this.id = id;
       this.loan_date = loanDate;
       this.loan_deadline = loanDeadline;

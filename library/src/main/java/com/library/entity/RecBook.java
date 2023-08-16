@@ -2,6 +2,7 @@ package com.library.entity;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -32,6 +33,9 @@ public class RecBook {
 	
 	private String publisher;
 	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="member_id")
+	private Member member;
 	
 	@Builder
 	public RecBook(Long id, String title, String publisher) {
@@ -45,4 +49,5 @@ public class RecBook {
 		this.title = title;
 		this.publisher = publisher;
 	}
+
 }

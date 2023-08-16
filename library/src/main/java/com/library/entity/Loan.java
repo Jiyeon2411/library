@@ -35,7 +35,7 @@ public class Loan extends BaseEntity{
 	
 	private LocalDate loan_date;
 	
-	private LocalDateTime loan_deadline;
+	private LocalDate loan_deadline;
 	
 	private LoanStatus loanstatus;
 	

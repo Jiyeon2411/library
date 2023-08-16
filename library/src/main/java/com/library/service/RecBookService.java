@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.util.StringUtils;
 
 import com.library.dto.LoanBookDto;
 import com.library.dto.RecBookDto;
@@ -18,7 +20,6 @@ import com.library.repository.MemberRepository;
 import com.library.repository.RecBookRepository;
 
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -27,6 +28,7 @@ import lombok.RequiredArgsConstructor;
 public class RecBookService {
 	@Autowired
 	private RecBookRepository recRepo;
+	private MemberRepository memRepo;
     
 	public RecBookService(RecBookRepository recRepo) {
 		this.recRepo = recRepo;
@@ -51,5 +53,26 @@ public class RecBookService {
 		return recBookDtoList;
 	}
 	
+	@Transactional(readOnly = true)
+	public boolean validateRec(Long id, String email) {
+		Member curMember = memRepo.findByEmail(email);
+		RecBook recBook = recRepo.findById(id)
+									.orElseThrow(EntityNotFoundException::new);
+		
+		Member savedMember = recBook.getMember();
+		
+		if(!StringUtils.equals(curMember.getEmail(), savedMember.getEmail())) {
+			return false;
+		}
+		
+		return true;
+		
+	}
 	
+	public void deleteRec(Long id) {
+		RecBook recBook = recRepo.findById(id)
+				.orElseThrow(EntityNotFoundException::new);
+		
+		recRepo.delete(recBook);
+	}
 }

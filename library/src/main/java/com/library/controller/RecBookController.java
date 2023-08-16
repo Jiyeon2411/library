@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -53,5 +55,18 @@ public class RecBookController {
 	public String recCreate(RecBookDto recBookdto) {
 		recBookService.savePost(recBookdto);
 		return "redirect:/";
+	}
+	
+	@DeleteMapping("/rec/{id}/delete")
+	public @ResponseBody ResponseEntity deleteRec(@PathVariable("id") Long id
+			, Principal principal) {
+		if(!recBookService.validateRec(id, principal.getName())) {
+			return new ResponseEntity<String>("글 삭제 권한이 없습니다.", 
+					HttpStatus.FORBIDDEN);
+		}
+		
+		System.out.println("id: " + id);
+		recBookService.deleteRec(id);
+		return new ResponseEntity<Long>(id, HttpStatus.OK);
 	}
 }

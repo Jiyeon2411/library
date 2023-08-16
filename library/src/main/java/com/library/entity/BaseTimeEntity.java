@@ -22,6 +22,6 @@ public abstract class BaseTimeEntity {
 	private LocalDate loan_date;
 	
 	@CreatedDate
-	private LocalDateTime loan_deadline;
+	private LocalDate loan_deadline;
 	
 }
